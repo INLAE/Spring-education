@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Games</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
+  <style>
+    .book-card {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <a href="/game/new" class="btn btn-primary">Add new</a>
+    </div>
+  </div>
+  <h1 class="text-center">Games</h1>
+  <div class="row">
+    <div th:each="game : ${game}" class="col-md-4">
+      <div class="card book-card">
+        <div class="card-body">
+          <h5 class="card-title">[[${game.gameTitle}]]</h5>
+          <h6 class="card-subtitle mb-2 text-muted">[[${game.gameStudio}]]</h6>
+          <h6 class="card-subtitle mb-2 text-muted">[[${game.year}]]</h6>
+          <p class="card-text">[[${game.description}]]</p>
+          <p class="card-text">Done <input type="checkbox" th:checked="${game.finished}" disabled /></p>
+          <div class="text-right">
+            <td>
+              <a th:href="@{/game/edit/{id}(id=${game.gameId})}" class="btn btn-primary">Edit</a>
+              <a th:href="@{/game/delete/{id}(id=${game.gameId})}" class="btn btn-danger">Delete</a>
+            </td>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
