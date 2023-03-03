@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>NOTES</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
+  <style>
+    .book-card {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <a href="/note/new" class="btn btn-primary">Add New</a>
+    </div>
+  </div>
+  <h1 class="text-center">Notes</h1>
+  <div class="row">
+    <div th:each="note : ${note}" class="col-md-4">
+      <div class="card book-card">
+        <div class="card-body">
+          <h5 class="card-title">[[${note.noteTitle}]]</h5>
+          <p class="card-text">[[${note.description}]]</p>
+          <div class="text-right">
+            <td>
+              <a th:href="@{/note/edit/{id}(id=${note.noteId})}" class="btn btn-primary">Edit</a>
+              <a th:href="@{/note/delete/{id}(id=${note.noteId})}" class="btn btn-danger">Delete</a>
+            </td>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
